@@ -1,0 +1,49 @@
+// Place all the styles related to the recipes controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+@import "bootstrap-sprockets";
+@import "bootstrap";
+
+
+#navbar-nav{
+  border-radius:0;
+  border: 1px solid #c2d6d6;
+  background-color: #c2d6d6;
+}
+.form-control, .btn{
+   border-radius:0;
+  // height: 10%;
+}
+#chocolate_looking_for{
+   border-radius:0;
+}
+.sushi{
+  margin-top: 3%;
+  color: red;
+  font-size: 1.5em;
+  font-family: "Times New Roman", Times, serif;
+}
+.thead-inverse{
+   font-size: 1.8em;
+   background-color: #c2d6d6;
+   font-family: "Times New Roman", Times, serif;
+}
+
+table {
+  border-collapse: collapse;
+}
+
+td {
+  padding: 12px;
+}
+
+.even {
+  background-color: #D6E1C3;
+}
+i{
+  background-color: yellow;
+}
+p{
+  text-align: center;
+
+}

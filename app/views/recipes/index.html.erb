@@ -1,0 +1,70 @@
+<% if (@recipes.nil? or @recipes == []) %>
+<p class="sushi"> No courses found with relevant information<strong><%= @search_term %></strong>... Sorry !! </p>
+<% else%>
+<nav id="navbar-nav" class="navbar navbar-default navbar-inverse">
+  <div class="container">
+    <!-- Brand and toggle get grouped for better mobile display -->
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <%= link_to image_tag("https://c2.staticflickr.com/2/1627/26575633466_febcfa6057.jpg", class:"im-responsive", width:"50px",  alt:"A-B"),'/' %>
+    </div>
+
+    <!-- Collect the nav links, forms, and other content for toggling -->
+    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+      
+   <!--   
+      <form class="navbar-form navbar-right" role="search">
+        <div class="form-group">
+          <input type="text" class="form-control" placeholder="Search">
+        </div>
+        <button type="submit" class="btn btn-default">Submit</button>
+      </form> -->
+      <div class="navbar-form navbar-right" role="search_term">
+         <%= form_for(@search_term) do |f| %>
+            <div class="form-group">
+               <%= f.text_field :looking_for, placeholder:"Search"%>
+            </div>
+            <%= f.submit "Send", class: "btn btn-sm btn-info" %>
+        <% end %>
+      </div>
+      
+            
+      
+    </div><!-- /.navbar-collapse -->
+  </div><!-- /.container-fluid -->
+</nav>
+
+
+<section class="container">
+   <h1>Searching for - <%= @search_term %></h1>
+  <h3>Powered by - <%= link_to('www.food2fork.com' , 'http://www.food2fork.com', target:'_blank') %> - website</h3>
+ 
+  <p>
+    <strong>New searching, add to the default url: </strong><i> &lt;?looking_for&nbsp; =&nbsp;name_of_recipe &gt;</i>
+  </p>
+  <table class="table ">
+    <thead class="thead-inverse">
+      <tr>
+      	<th>Image</th>
+      	<th>Name</th>
+      	<th>Rank</th>
+    </tr>
+    </thead>
+    
+    <% @recipes.each do |recipe| %>
+    <tbody>
+      <tr class=<%= cycle('even', 'odd') %>>
+         <td><%= link_to(image_tag(recipe["image_url"], class:"img-responsive img-thumbnail", width: '200'), recipe["f2f_url"])%></td>
+         <td><%= link_to(recipe["title"], recipe["f2f_url"]) %></td>
+         <td><%= recipe["social_rank"] %></td>
+      </tr>
+    </tbody>
+    <% end %>
+  </table>
+</section>
+<% end%>
